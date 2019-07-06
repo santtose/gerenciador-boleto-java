@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/recursos/template/template.xhtml">
+
+	<ui:define name="tituloPagina">Lista</ui:define>
+	<ui:define name="tituloPrincipal">Boletos Cadastrados</ui:define>
+	<ui:define name="tituloSecundario">Lista dos Boletos</ui:define>
+
+	<ui:define name="botoesAcao"></ui:define>
+
+	<ui:define name="conteudo">
+
+		<p:dataTable value="#{boletoBean.listarBoletos()}" var="boleto">
+
+			<p:column headerText="Empresa:">
+				<h:outputText value="#{boleto.empresa.nomeEmpresa}" />
+			</p:column>
+
+			<p:column headerText="Descrição:">
+				<h:outputText value="#{boleto.descricao}" />
+			</p:column>
+
+			<p:column headerText="Valor">
+				<h:outputText value="#{boleto.valor}" />
+			</p:column>
+
+			<p:column headerText="Pago?">
+				<p:selectOneRadio value="#{boletoBean.boleto.tipo}">
+					<f:selectItem itemLabel="Sim" itemValue="Sim" />
+					<f:selectItem itemLabel="Não" itemValue="Não" />
+				</p:selectOneRadio>
+			</p:column>
+			
+			<p:column headerText="Ações">
+				<p:commandButton value="Excluir"
+					action="#{boletoBean.excluirBolero(boleto)}" update="@form" />
+			</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>
+
+</html>

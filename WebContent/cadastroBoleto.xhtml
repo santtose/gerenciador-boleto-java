@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<ui:composition template="/recursos/template/template.xhtml">
+	
+			<ui:define name="tituloPagina">Boleto</ui:define>
+			<ui:define name="tituloPrincipal">Cadastro de Boletos</ui:define>
+			<ui:define name="tituloSecundario">Cadastre um Boleto</ui:define>
+			
+			<ui:define name="botoesAcao">
+				<p:commandButton value="Cadastrar" action="#{boletoBean.cadastrar()}" update="@form" />
+			</ui:define>
+			
+			<ui:define name="conteudo">
+			
+			<p:panelGrid columns="3">
+			
+				<p:outputLabel for="n1" value="Empresa:"/>
+				<p:selectOneMenu id="n1" value="#{boletoBean.boleto.empresa}"
+								converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemLabel="--Selecione--" noSelectionOption="true"/>
+					<f:selectItems value="#{empresaBean.empresas}" var="empresa"
+									itemLabel="#{empresa.nomeEmpresa}" itemValue="#{empresa}"/>
+				</p:selectOneMenu>
+				<p:message for="n1"/>
+				
+				<p:outputLabel for="n2" value="Descrição:"/>
+				<p:inputText id="n2" value="#{boletoBean.boleto.descricao}"/>
+				<p:message for="n2"/>
+				
+				<p:outputLabel for="n3" value="Valor do Boleto:"/>
+				<p:inputNumber id="n3" value="#{boletoBean.boleto.valor}"
+					thousandSeparator="." decimalSeparator="," decimalPlaces="2"/>
+				<p:message for="n3"/>
+			
+			</p:panelGrid>
+			
+			</ui:define>
+	</ui:composition>
+
+</html>
