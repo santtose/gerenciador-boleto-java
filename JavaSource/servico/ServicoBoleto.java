@@ -21,7 +21,7 @@ public class ServicoBoleto {
 	}
 
 	public void excluirBoleto(Boleto boleto) throws Exception {
-		if (boleto.getTipo() != null && !boleto.getTipo().equalsIgnoreCase("Sim")) {
+		if (boleto.getTipo().equalsIgnoreCase("Não")) {
 			throw new Exception("Não é permitido excluir boletos não pagos!");
 		}
 		this.em.remove(this.em.merge(boleto));

@@ -36,6 +36,14 @@
 				<p:inputNumber id="n3" value="#{boletoBean.boleto.valor}"
 					thousandSeparator="." decimalSeparator="," decimalPlaces="2"/>
 				<p:message for="n3"/>
+				
+				<p:outputLabel for="n4" value="Condição:"/>
+				<p:selectOneMenu id="n4" value="#{boletoBean.boleto.tipo}">
+					<f:selectItem itemLabel="--Selecione--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Sim" itemValue="Sim" />
+					<f:selectItem itemLabel="Não" itemValue="Não" />
+				</p:selectOneMenu>
+				<p:message for="n4"/>
 			
 			</p:panelGrid>
 			

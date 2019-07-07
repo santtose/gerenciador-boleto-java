@@ -35,7 +35,7 @@ public class BoletoBean {
 	}
 	
 	public ArrayList<Empresa> listarTodas(){
-		return null;
+		return this.listarTodas();
 	}
 	
 	public void excluirBolero(Boleto boleto) {

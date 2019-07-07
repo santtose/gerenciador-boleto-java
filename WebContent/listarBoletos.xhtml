@@ -30,12 +30,9 @@
 			</p:column>
 
 			<p:column headerText="Pago?">
-				<p:selectOneRadio value="#{boletoBean.boleto.tipo}">
-					<f:selectItem itemLabel="Sim" itemValue="Sim" />
-					<f:selectItem itemLabel="Não" itemValue="Não" />
-				</p:selectOneRadio>
+				<h:outputText value="#{boleto.tipo}" />
 			</p:column>
-			
+
 			<p:column headerText="Ações">
 				<p:commandButton value="Excluir"
 					action="#{boletoBean.excluirBolero(boleto)}" update="@form" />
